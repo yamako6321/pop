@@ -29,14 +29,9 @@ for i in text:
 
 # считает слоги
 count_vowels = 0
-for i in text:
-    if 'а' in i or 'о' in i or 'у' in i or 'ы' in i \
-            or 'э' in i or 'е' in i or 'ё' in i or 'и' in i \
-            or 'ю' in i or 'я' in i or 'А' in i or 'О' in i \
-            or 'У' in i or 'Ы' in i or 'Э' in i or 'Е' in i \
-            or 'Ё' in i or 'И' in i or 'Ю' in i or 'Я' in i:
+for x in text.lower():
+    if x in 'аоуыэуёюяие':
         count_vowels += 1
-# print(count_vowels)
 
 # как считать количество слов
 count_words = text.count(" ") + 1
