@@ -1,31 +1,19 @@
-import re
-
-
-
-
-# word = 'АЯrуенКЕНГАПРОкенгпрогя'
-# for i in word:
-#     if ord(i)>=1040 and ord(i)<=1071:
-#         print(i)
-# count = 0
-# for i in range (len(text_1)):
-#     if text_1[i] in '.?!':
-#         shift = 1
-#         while i+shift<len(text_1)-1 and text_1[i+shift] == ' ':
-#             shift += 1
-#         if i+shift >= len(text_1)-1:
-#             break
-#         if ord(text_1[i+shift])>=1040 and ord(text_1[i+shift])<=1071:
-#             count+=1
-# print(count)
-
 text = input()
 # считает прелдложения
 count_sentence = 0
+last = 0
+now = 0
 for i in text:
-    if i in '.!?':
+    if ord(i) > 1039 and ord (i) < 1072:
+        now = 1
+    if now == 1 and last == 1:
+        now = 0
+        last = 0
         count_sentence += 1
-# print(count_sentence)
+    if i in '.?!':
+        last = 1
+if last == 1:
+    count_sentence += 1
 
 # считает слоги
 count_vowels = 0
@@ -35,7 +23,6 @@ for x in text.lower():
 
 # как считать количество слов
 count_words = text.count(" ") + 1
-# print(count_words)
 
 # индекс Флеша
 I_F = 206.835 - 1.3 * (count_words/count_sentence) - 60.1 * (count_vowels/count_words)
